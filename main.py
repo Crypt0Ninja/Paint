@@ -82,6 +82,17 @@ def clear_canvas():
 	global frame
 	frame.delete("all")
 
+def win_color_change():
+	win = Tk()
+
+	win.title("Color Changer")
+
+	ent = Entry(win)
+
+	ent.pack()
+	ent.bind("<Return>",lambda e: change_color(ent.get()))
+	win.mainloop()
+
 canvas_color = "white"
 
 canvas_bg = "black"
@@ -95,6 +106,9 @@ print(frame)
 
 fr = Frame(root,width = 800,height = 200,bg = "gray19")
 fr.place(x = 0,y = 400)
+
+# Buttons distance = 130 
+
 green = Button(fr,text = "Green",width = 10,bg = "green",fg = "white",height = 1,command = lambda: change_color("green"))
 
 green.place(x = 680,y = 150)
@@ -103,21 +117,21 @@ white = Button(fr,text = "White",width = 10,bg = "white",fg = "black",height = 1
 
 white.place(x = 550,y = 150)
 
+another_color = main_panel.add_command(label = "Another Color",command = win_color_change)
+
 clear = Button(fr,text = "Clear Canvas",command = clear_canvas)
 
 clear.place(x = 420,y = 150)
+
+Label(fr,text = "Enter paint width:").place( x = 0,y = 0 )
 
 paint_width = Entry(fr)
 
 paint_width.place(
 	x = 0,
-	y = 0
-)
-
-sumbit_color = Button(fr,text = "Sumbit!",bg = "darkblue",command = sumbit_function)
-
-sumbit_color.place(
-	x = 0,
 	y = 30
 )
+
+paint_width.bind("<Return>",lambda e: sumbit_function())
+
 root.mainloop()
