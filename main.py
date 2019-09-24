@@ -2,10 +2,7 @@
 from tkinter import *
 from time import sleep		     
 from PIL import Image, ImageTk   
-try:
-  import pyscreenshot as ImageGrab 
-except:
-  pass
+import pyscreenshot as ImageGrab 
 ##################################
 
 def saver(event,filename,window,box):
